@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/common/Header";
 import Footer from "../components/common/Footer";
@@ -70,42 +70,38 @@ const Home = () => {
                     <h2 className="pillars-title">Core Investment Pillars</h2>
 
                     <div className="pillars-grid">
-                        {[
-                            {
-                                title: "Property",
-                                image: "/images/vgd_demo_properties.jpg",
-                                desc:
-                                    "Iconic developments • Prime commercial & residential acquisitions • High-yield sectional title & estates",
-                                path: "/property",
-                            },
-                            {
-                                title: "Mining",
-                                image: "/images/vgd_demo_mining.jpg",
-                                desc:
-                                    "Strategic mineral rights • Chrome, platinum group metals, coal & critical minerals • Exploration & production partnerships",
-                                path: "/mining",
-                            },
-                            {
-                                title: "Finance",
-                                image: "/images/vgd_demo_finance.jpg",
-                                desc:
-                                    "Private credit • Structured finance • Mezzanine & equity solutions for high-growth enterprises",
-                                path: "/financial",
-                            },
-                        ].map((item) => (
-                            <Link key={item.title} to={item.path} className="pillar-link">
-                                <div className="pillar-card">
-                                    <div className="pillar-image-wrapper">
-                                        <img src={item.image} alt={item.title} />
-                                        <div className="pillar-image-overlay"></div>
-                                    </div>
-                                    <div className="pillar-body">
-                                        <h3>{item.title}</h3>
-                                        <p>{item.desc}</p>
-                                    </div>
-                                </div>
-                            </Link>
-                        ))}
+                        <PillarCard
+                            title="Property"
+                            images={[
+                                "/images/property/property_4.jpg",
+                                "/images/property/property_2.jpg",
+                                "/images/property/property_3.jpg",
+                            ]}
+                            desc="Iconic developments • Prime commercial & residential acquisitions • High-yield sectional title & estates"
+                            path="/property"
+                        />
+
+                        <PillarCard
+                            title="Mining"
+                            images={[
+                                "/images/mining/mining_1.jpg",
+                                "/images/mining/mining_2.jpg",
+                                "/images/mining/mining_3.jpg",
+                            ]}
+                            desc="Strategic mineral rights • Chrome, platinum group metals, coal & critical minerals • Exploration & production partnerships"
+                            path="/mining"
+                        />
+
+                        <PillarCard
+                            title="Finance"
+                            images={[
+                                "/images/finance/finance_1.jpg",
+                                "/images/finance/finance_2.jpg",
+                                "/images/finance/finance_3.jpg",
+                            ]}
+                            desc="Private credit • Structured finance • Mezzanine & equity solutions for high-growth enterprises"
+                            path="/financial"
+                        />
                     </div>
                 </section>
 
@@ -128,6 +124,45 @@ const Home = () => {
 
             <Footer />
         </>
+    );
+};
+
+/* ===== SLIDING CARD COMPONENT ===== */
+
+const PillarCard = ({ title, images, desc, path }) => {
+    const [index, setIndex] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setIndex((prev) => (prev + 1) % images.length);
+        }, 3500); // slide speed
+
+        return () => clearInterval(timer);
+    }, [images.length]);
+
+    return (
+        <Link to={path} className="pillar-link">
+            <div className="pillar-card">
+                <div className="pillar-image-wrapper">
+                    {images.map((img, i) => (
+                        <img
+                            key={img}
+                            src={img}
+                            alt={title}
+                            className={`pillar-slide ${
+                                i === index ? "active" : ""
+                            }`}
+                        />
+                    ))}
+                    <div className="pillar-image-overlay"></div>
+                </div>
+
+                <div className="pillar-body">
+                    <h3>{title}</h3>
+                    <p>{desc}</p>
+                </div>
+            </div>
+        </Link>
     );
 };
 

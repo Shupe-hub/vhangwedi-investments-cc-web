@@ -1,28 +1,40 @@
 :root {
-    /* Light mode */
+    /* ===== LIGHT MODE ===== */
     --bg-main: #ffffff;
     --bg-card: #ffffff;
+    --bg-soft: #f8fafc;
+
     --text-main: #0f172a;
     --text-muted: #475569;
 
-    --gold: brown;
-    --gold-soft: #ffd98a;
-    --gold-dark: #d4a23f;
+    --gold: #C19A3E;
+    --gold-soft: #E3C875;
+    --gold-dark: #9C7C2F;
 
     --nav-bg-1: #ffffff;
     --nav-bg-2: #ffffff;
 
-    --hero-bg-1: #ffffff;        /* 👈 NEW */
-    --hero-bg-2: #f8fafc;        /* 👈 NEW */
+    --hero-bg-1: #ffffff;
+    --hero-bg-2: #f8fafc;
 
     --footer-bg-1: #f1f5f9;
     --footer-bg-2: #e5e7eb;
+
+    --page-overlay: rgba(255, 255, 255, 0.92);
+
+    --card-grad-1: #ffffff;
+    --card-grad-2: #f9f5ec;
+
+    --btn-primary: linear-gradient(135deg, #C19A3E, #E3C875);
+    --btn-text: #0f172a;
 }
 
 /* ===== DARK MODE ===== */
 [data-theme="dark"] {
     --bg-main: #050608;
     --bg-card: #0e0f14;
+    --bg-soft: #0b0c10;
+
     --text-main: #e5e7eb;
     --text-muted: #94a3b8;
 
@@ -33,9 +45,17 @@
     --nav-bg-1: #050608;
     --nav-bg-2: #0e0f14;
 
-    --hero-bg-1: #050608;        /* 👈 NEW */
-    --hero-bg-2: #0e0f14;        /* 👈 NEW */
+    --hero-bg-1: #050608;
+    --hero-bg-2: #0e0f14;
 
     --footer-bg-1: #020204;
     --footer-bg-2: #090a0f;
+
+    --page-overlay: rgba(5, 6, 8, 0.9);
+
+    --card-grad-1: #0e0f14;
+    --card-grad-2: #16181f;
+
+    --btn-primary: linear-gradient(135deg, #f5c46c, #ffd98a);
+    --btn-text: #050608;
 }

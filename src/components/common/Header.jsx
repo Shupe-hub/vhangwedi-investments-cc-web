@@ -13,9 +13,9 @@ const Header = () => {
             label: "Services",
             path: "/services",
             dropdown: [
-                { label: "Property Investments", path: "/services#property" },
-                { label: "Mining Investments", path: "/services#mining" },
-                { label: "Financial Services", path: "/services#finance" },
+                { label: "Property Investments", path: "/property" },
+                { label: "Mining Investments", path: "/mining" },
+                { label: "Financial Services", path: "/finance" },
             ],
         },
         {
@@ -33,7 +33,7 @@ const Header = () => {
     return (
         <header className="site-header">
             <div className="header-logo-container">
-                <Link to="/home">
+                <Link to="/">
                     <img
                         src="/images/background.png"
                         alt="Vhagwedi"
