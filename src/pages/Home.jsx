@@ -386,28 +386,36 @@ const FeaturedSlider = () => {
         <div className="featured-slider">
             <button className="slider-btn left" onClick={prev}>‹</button>
 
-            <div className="slider-track">
-                {FEATURED_PROJECTS.map((item, i) => (
-                    <div
-                        key={item.title}
-                        className={`featured-card ${i === index ? "active" : ""}`}
-                        onClick={() => navigate(item.path)}
-                    >
-                        <img src={item.image} alt={item.title} />
-                        <div className="featured-overlay"></div>
+            <div className="slider-window">
+                <div
+                    className="slider-track"
+                    style={{
+                        transform: `translateX(-${index * 100}%)`,
+                    }}
+                >
+                    {FEATURED_PROJECTS.map((item) => (
+                        <div
+                            key={item.title}
+                            className="featured-card"
+                            onClick={() => navigate(item.path)}
+                        >
+                            <img src={item.image} alt={item.title} />
+                            <div className="featured-overlay"></div>
 
-                        <div className="featured-info">
-                            <h3>{item.title}</h3>
-                            <p>{item.location}</p>
+                            <div className="featured-info">
+                                <h3>{item.title}</h3>
+                                <p>{item.location}</p>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
 
             <button className="slider-btn right" onClick={next}>›</button>
         </div>
     );
 };
+
 
 
 export default Home;

@@ -1,16 +1,16 @@
 @import "../styles/variables.css";
 
-/* ===== MAIN ===== */
+/* =====================================================
+   MAIN WRAPPER
+===================================================== */
+
 .about-main {
     position: relative;
     padding: 140px 40px 80px;
     min-height: 100vh;
-    background: linear-gradient(
-            135deg,
-            var(--hero-bg-1),
-            var(--hero-bg-2)
-    ),
-    url("/images/about_us_bg.jpg") center / cover no-repeat;
+    background:
+            linear-gradient(135deg, var(--hero-bg-1), var(--hero-bg-2)),
+            url("/images/about_us_bg.jpg") center / cover no-repeat;
     transition: background 0.4s ease;
 }
 
@@ -21,13 +21,19 @@
     z-index: 0;
 }
 
-/* ===== CONTENT ===== */
+/* =====================================================
+   CONTENT WRAPPER
+===================================================== */
+
 .about-content {
     position: relative;
     z-index: 1;
 }
 
-/* ===== INTRO ===== */
+/* =====================================================
+   INTRO SECTION
+===================================================== */
+
 .about-intro {
     max-width: 1100px;
     margin: 0 auto 80px;
@@ -48,7 +54,10 @@
     line-height: 1.7;
 }
 
-/* ===== SECTIONS ===== */
+/* =====================================================
+   GENERAL SECTIONS
+===================================================== */
+
 .about-section {
     max-width: 1100px;
     margin: 0 auto 80px;
@@ -70,25 +79,34 @@
     text-align: center;
 }
 
-/* ===== TEXT ===== */
+/* =====================================================
+   TEXT
+===================================================== */
+
 .about-text {
     color: var(--text-muted);
     line-height: 1.7;
     margin-bottom: 16px;
 }
 
-/* ===== HIGHLIGHT CARD ===== */
+/* =====================================================
+   HIGHLIGHT CARD (FOCUS AREAS)
+===================================================== */
+
 .about-highlight-card {
-    background: linear-gradient(
-            var(--card-grad-1),
-            var(--card-grad-1)
-    )
-    padding-box,
-    linear-gradient(135deg, var(--gold), var(--card-grad-2)) border-box;
+    background:
+            linear-gradient(var(--card-grad-1), var(--card-grad-1)) padding-box,
+            linear-gradient(135deg, var(--gold), var(--card-grad-2)) border-box;
     border: 1.5px solid transparent;
     border-radius: 18px;
     padding: 28px;
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-highlight-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
 }
 
 .about-highlight-title {
@@ -103,17 +121,21 @@
     line-height: 1.8;
 }
 
-/* ===== CARDS ===== */
+/* =====================================================
+   STANDARD CARDS (VISION / MISSION)
+===================================================== */
+
 .about-card {
     background: var(--bg-card);
     border-radius: 18px;
     padding: 28px;
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .about-card:hover {
     transform: translateY(-6px);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
 }
 
 .about-card-title {
@@ -122,7 +144,10 @@
     font-size: 1.4rem;
 }
 
-/* ===== VALUES ===== */
+/* =====================================================
+   VALUES GRID
+===================================================== */
+
 .about-values-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -135,11 +160,12 @@
     border-radius: 16px;
     padding: 24px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .about-value-card:hover {
     transform: translateY(-6px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
 }
 
 .about-value-title {
@@ -148,7 +174,10 @@
     font-size: 1.2rem;
 }
 
-/* ===== RESPONSIVE ===== */
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
 @media (max-width: 900px) {
     .about-main {
         padding: 120px 20px 60px;
@@ -156,5 +185,17 @@
 
     .about-title {
         font-size: 2.3rem;
+    }
+
+    .about-section-title {
+        font-size: 1.8rem;
+    }
+
+    .about-grid {
+        gap: 28px;
+    }
+
+    .about-values-grid {
+        gap: 24px;
     }
 }
