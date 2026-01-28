@@ -337,7 +337,7 @@ const FEATURED_PROJECTS = [
     {
         title: "Sandton Luxury Apartments",
         location: "Sandton, Johannesburg",
-        image: "/images/projects/fea_.jpg",
+        image: "/images/property/property_3.jpg",
         path: "/portfolio",
     },
     {
