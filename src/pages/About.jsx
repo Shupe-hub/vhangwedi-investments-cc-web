@@ -1,9 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../components/common/Header";
 import Footer from "../components/common/Footer";
 import "./About.css";
 
 const About = () => {
+    const [selectedMember, setSelectedMember] = useState(null);
+
+    const teamMembers = [
+        {
+            name: "Executive Director",
+            role: "Founder & Managing Director",
+            image: "/images/team/shupe_1.jpeg",
+            phone: "+27 82 123 4567",
+            email: "director@vhagwedi.co.za",
+            bio: "Over 15 years of leadership experience in property, mining, and financial investments.",
+        },
+        {
+            name: "Investment Manager",
+            role: "Property & Mining Portfolio",
+            image: "/images/team/shupe_2.jpeg",
+            phone: "+27 83 456 7890",
+            email: "investments@vhagwedi.co.za",
+            bio: "Specialist in high-value property and mining portfolio management.",
+        },
+        {
+            name: "Financial Analyst",
+            role: "Structured Finance & Equity",
+            image: "/images/team/nomsa_1.jpeg",
+            phone: "+27 81 987 6543",
+            email: "finance@vhagwedi.co.za",
+            bio: "Expert in venture capital, financial modeling, and equity investments.",
+        },
+    ];
+
     return (
         <>
             <Header />
@@ -82,23 +111,19 @@ const About = () => {
                             {[
                                 {
                                     title: "Integrity",
-                                    desc:
-                                        "We conduct our business with honesty, transparency, and accountability.",
+                                    desc: "We conduct our business with honesty, transparency, and accountability.",
                                 },
                                 {
                                     title: "Excellence",
-                                    desc:
-                                        "We strive for high standards in every investment and partnership.",
+                                    desc: "We strive for high standards in every investment and partnership.",
                                 },
                                 {
                                     title: "Sustainability",
-                                    desc:
-                                        "We focus on long-term impact and responsible growth.",
+                                    desc: "We focus on long-term impact and responsible growth.",
                                 },
                                 {
                                     title: "Partnership",
-                                    desc:
-                                        "We believe strong relationships drive shared success.",
+                                    desc: "We believe strong relationships drive shared success.",
                                 },
                             ].map((value) => (
                                 <div key={value.title} className="about-value-card">
@@ -108,8 +133,60 @@ const About = () => {
                             ))}
                         </div>
                     </section>
+
+                    {/* MEET OUR TEAM */}
+                    <section className="about-section">
+                        <h2 className="about-section-title centered">Meet Our Team</h2>
+
+                        <div className="team-grid">
+                            {teamMembers.map((member) => (
+                                <div
+                                    key={member.email}
+                                    className="team-card"
+                                    onClick={() => setSelectedMember(member)}
+                                >
+                                    <img src={member.image} alt={member.name} />
+                                    <h3>{member.name}</h3>
+                                    <p>{member.role}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
                 </div>
             </main>
+
+            {/* TEAM MODAL */}
+            {selectedMember && (
+                <div
+                    className="modal-overlay"
+                    onClick={() => setSelectedMember(null)}
+                >
+                    <div
+                        className="modal-content"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <img
+                            src={selectedMember.image}
+                            alt={selectedMember.name}
+                            className="modal-image"
+                        />
+
+                        <h2>{selectedMember.name}</h2>
+                        <p className="modal-role">{selectedMember.role}</p>
+                        <p className="modal-bio">{selectedMember.bio}</p>
+
+                        <p><strong>📞</strong> {selectedMember.phone}</p>
+                        <p><strong>✉️</strong> {selectedMember.email}</p>
+
+                        <button
+                            onClick={() => setSelectedMember(null)}
+                            className="modal-close"
+                        >
+                            ×
+                        </button>
+                    </div>
+                </div>
+            )}
 
             <Footer />
         </>
